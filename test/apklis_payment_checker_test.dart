@@ -1,6 +1,6 @@
+import 'package:apklis_payment_checker/apklis_payment_checker.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:apklis_payment_checker/apklis_payment_checker.dart';
 
 void main() {
   const MethodChannel channel = MethodChannel('apklis_payment_checker');
@@ -9,7 +9,10 @@ void main() {
 
   setUp(() {
     channel.setMockMethodCallHandler((MethodCall methodCall) async {
-      return '42';
+      return {
+        "paid": false,
+        "username": "example",
+      };
     });
   });
 
@@ -17,7 +20,10 @@ void main() {
     channel.setMockMethodCallHandler(null);
   });
 
-  test('getPlatformVersion', () async {
-    expect(await ApklisPaymentChecker.platformVersion, '42');
+  test('isPurchased', () async {
+    final packageId = 'com.example.nova.prosalud';
+    var status = await ApklisPaymentChecker.isPurchased(packageId);
+    expect(status.paid, false);
+    expect(status.username, "example");
   });
 }
