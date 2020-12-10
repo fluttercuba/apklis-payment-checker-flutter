@@ -1,4 +1,4 @@
-# Apklis Payment Checker for Flutter
+# Apklis Payment Checker para Flutter
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Pub Version](https://img.shields.io/pub/v/apklis_payment_checker)](https://pub.dev/packages/apklis_payment_checker)
@@ -9,13 +9,13 @@
 [![Github Watchers](https://img.shields.io/github/watchers/fluttercuba/apklis-payment-checker-flutter?style=flat&logo=github)](https://github.com/fluttercuba/apklis-payment-checker-flutter)
 [![GitHub contributors](https://img.shields.io/github/contributors/fluttercuba/apklis-payment-checker-flutter)](https://github.com/fluttercuba/apklis-payment-checker-flutter/graphs/contributors)
 
-Flutter plugin for Apklis payment checking.
+Plugin para Flutter para el chequeo de pagos de Apklis
 
-Available in Pub.dev: <https://pub.dev/packages/apklis_payment_checker>
+Disponible Pub.dev: <https://pub.dev/packages/apklis_payment_checker>
 
-To know how to install go to: <https://pub.dev/packages/apklis_payment_checker/install>
+Para conocer como instalar seguir el siguiente enlace: <https://pub.dev/packages/apklis_payment_checker/install>
 
-## Usage
+## Uso
 
 ```dart
 final packageId = 'com.example.nova.prosalud';
@@ -24,4 +24,4 @@ print(status.paid);
 print(status.username);
 ```
 
-Full example available at: <https://pub.dev/packages/apklis_payment_checker/example>
+Ejemplo completo disponible en: <https://pub.dev/packages/apklis_payment_checker/example>
