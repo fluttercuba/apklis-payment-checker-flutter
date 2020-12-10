@@ -2,13 +2,17 @@ name: Publish
 on:
   push:
     tags: v*.*.*
+  workflow_dispatch:
 jobs:
   Publish:
     runs-on: ubuntu-latest
+    container:
+      image:  google/dart:latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Publish to Pub.dev
-        uses: k-paxian/dart-package-publisher@master
-        with:
-          credentialJson: ${{ secrets.CREDENTIAL_JSON }}
+    - uses: actions/checkout@v2
+    - name: Install dependencies
+      run: pub get
+    - name: Publish package
+      uses: sakebook/actions-flutter-pub-publisher@v1.3.1
+      with:
+        credential: ${{ secrets.CREDENTIAL_JSON }}
