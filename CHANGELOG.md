@@ -1,10 +1,10 @@
-# Changelog
+# Historial de Cambios
 
 ## 0.1.1
 
-* Change homepage
-* Add Pub version badge
+* Poner de homepage el enlace al repositorio
+* Añadir un badge de la última versión disponible en pub.dev 
 
 ## 0.1.0
 
-* Implement first beta version
+* Implementar la primera versión beta
