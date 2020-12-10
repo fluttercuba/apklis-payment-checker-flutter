@@ -1,0 +1,25 @@
+.DS_Store
+.dart_tool/
+
+.packages
+.pub/
+
+build/
+
+# Added manually
+
+# https://dart.dev/guides/libraries/private-files#the-rules
+doc/api/
+
+# https://dart.dev/guides/libraries/private-files#pubspeclock
+# Except for application packages
+pubspec.lock
+
+# IntelliJ
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# VSCode
+.code
