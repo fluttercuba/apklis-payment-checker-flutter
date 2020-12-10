@@ -1,45 +1,40 @@
-import 'package:flutter/material.dart';
 import 'dart:async';
+import 'dart:developer';
 
-import 'package:flutter/services.dart';
 import 'package:apklis_payment_checker/apklis_payment_checker.dart';
+import 'package:apklis_payment_checker/apklis_payment_status.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(ExampleApp());
 }
 
-class MyApp extends StatefulWidget {
+class ExampleApp extends StatefulWidget {
   @override
-  _MyAppState createState() => _MyAppState();
+  ExampleAppState createState() => ExampleAppState();
 }
 
-class _MyAppState extends State<MyApp> {
-  String _platformVersion = 'Unknown';
+class ExampleAppState extends State<ExampleApp> {
+  final keyForm = GlobalKey<FormState>();
+  final controller = TextEditingController();
+  ApklisPaymentStatus status;
 
   @override
   void initState() {
     super.initState();
-    initPlatformState();
   }
 
-  // Platform messages are asynchronous, so we initialize in an async method.
-  Future<void> initPlatformState() async {
-    String platformVersion;
-    // Platform messages may fail, so we use a try/catch PlatformException.
+  Future<void> requestPaymentStatus(String packageId) async {
     try {
-      platformVersion = await ApklisPaymentChecker.platformVersion;
-    } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
+      var status = await ApklisPaymentChecker.isPurchased(packageId);
+      setState(() {
+        this.status = status;
+        print(this.status.username);
+      });
+    } on PlatformException catch (e) {
+      log(e.toString());
     }
-
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
-    if (!mounted) return;
-
-    setState(() {
-      _platformVersion = platformVersion;
-    });
   }
 
   @override
@@ -47,10 +42,86 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Plugin example app'),
+          centerTitle: true,
+          title: const Text('Apklis Payment Checker'),
         ),
-        body: Center(
-          child: Text('Running on: $_platformVersion\n'),
+        body: Form(
+          key: keyForm,
+          autovalidateMode: AutovalidateMode.always,
+          child: Column(
+            children: [
+              Container(
+                margin: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: TextFormField(
+                        controller: controller,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: const BorderRadius.all(
+                              const Radius.circular(10.0),
+                            ),
+                          ),
+                          labelText: 'Package Id',
+                          hintText: 'com.example.nova.prosalud',
+                        ),
+                        keyboardType: TextInputType.text,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Is required';
+                          }
+                          return null;
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              if (status != null)
+                Column(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.all(5),
+                      child: Text('Paid:'),
+                    ),
+                    Container(
+                      margin: EdgeInsets.all(5),
+                      child: Text(
+                        status.paid.toString(),
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.all(5),
+                      child: Text('Username:'),
+                    ),
+                    Container(
+                      margin: EdgeInsets.all(5),
+                      child: Text(
+                        status.username ?? 'Unknow',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+            ],
+          ),
+        ),
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.search),
+          onPressed: () {
+            if (keyForm.currentState.validate()) {
+              final packageId = controller.text.trim();
+              requestPaymentStatus(packageId);
+            }
+          },
         ),
       ),
     );
