@@ -9,7 +9,7 @@
 [![Github Watchers](https://img.shields.io/github/watchers/fluttercuba/apklis-payment-checker-flutter?style=flat&logo=github)](https://github.com/fluttercuba/apklis-payment-checker-flutter)
 [![GitHub contributors](https://img.shields.io/github/contributors/fluttercuba/apklis-payment-checker-flutter)](https://github.com/fluttercuba/apklis-payment-checker-flutter/graphs/contributors)
 
-Plugin para Flutter para el chequeo de pagos de Apklis
+Plugin de Flutter para el chequeo de pagos de Apklis
 
 Disponible Pub.dev: <https://pub.dev/packages/apklis_payment_checker>
 
