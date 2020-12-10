@@ -11,6 +11,10 @@
 
 Flutter plugin for Apklis payment checking.
 
+Available in Pub.dev: <https://pub.dev/packages/apklis_payment_checker>
+
+To know how to install go to: <https://pub.dev/packages/apklis_payment_checker/install>
+
 ## Usage
 
 ```dart
@@ -19,3 +23,5 @@ var status = await ApklisPaymentChecker.isPurchased(packageId);
 print(status.paid);
 print(status.username);
 ```
+
+Full example available at: <https://pub.dev/packages/apklis_payment_checker/example>
