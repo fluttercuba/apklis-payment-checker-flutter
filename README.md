@@ -11,7 +11,7 @@
 
 Plugin de Flutter para el chequeo de pagos de Apklis
 
-Disponible Pub.dev: <https://pub.dev/packages/apklis_payment_checker>
+Disponible en Pub.dev: <https://pub.dev/packages/apklis_payment_checker>
 
 Para conocer como instalar seguir el siguiente enlace: <https://pub.dev/packages/apklis_payment_checker/install>
 
