@@ -6,7 +6,6 @@
 [![Github Stars](https://img.shields.io/github/stars/fluttercuba/apklis-payment-checker-flutter?style=flat&logo=github)](https://github.com/fluttercuba/apklis-payment-checker-flutter/stargazers)
 [![Github Forks](https://img.shields.io/github/forks/fluttercuba/apklis-payment-checker-flutter?style=flat&logo=github)](https://github.com/fluttercuba/apklis-payment-checker-flutter/network/members)
 [![Github Watchers](https://img.shields.io/github/watchers/fluttercuba/apklis-payment-checker-flutter?style=flat&logo=github)](https://github.com/fluttercuba/apklis-payment-checker-flutter)
-[![Website](https://img.shields.io/website?up_message=online&url=https%3A%2F%2Ffluttercuba.github.io/apklis-payment-checker-flutter)](https://fluttercuba.github.io/apklis-payment-checker-flutter)
 [![GitHub contributors](https://img.shields.io/github/contributors/fluttercuba/apklis-payment-checker-flutter)](https://github.com/fluttercuba/apklis-payment-checker-flutter/graphs/contributors)
 
 Flutter plugin for Apklis payment checking.
