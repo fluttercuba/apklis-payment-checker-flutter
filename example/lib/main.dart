@@ -23,15 +23,22 @@ class ExampleAppState extends State<ExampleApp> {
   @override
   void initState() {
     super.initState();
+    setPackageName();
+  }
+
+  Future<void> setPackageName() async {
+    try {
+      var packageName = await ApklisPaymentChecker.getPackageName();
+      setState(() => controller.text = packageName);
+    } on PlatformException catch (e) {
+      log(e.toString());
+    }
   }
 
   Future<void> requestPaymentStatus(String packageId) async {
     try {
       var status = await ApklisPaymentChecker.isPurchased(packageId);
-      setState(() {
-        this.status = status;
-        print(this.status.username);
-      });
+      setState(() => this.status = status);
     } on PlatformException catch (e) {
       log(e.toString());
     }
