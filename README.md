@@ -18,6 +18,14 @@ Para conocer como instalar seguir el siguiente enlace: <https://pub.dev/packages
 ## Uso
 
 ```dart
+var status = await ApklisPaymentChecker.isPurchased();
+print(status.paid);
+print(status.username);
+```
+
+Si se desea usar un nombre de paquete diferente al de la aplicación el método `isPurchased` puede recibirlo como parámetro:
+
+```dart
 final packageId = 'com.example.nova.prosalud';
 var status = await ApklisPaymentChecker.isPurchased(packageId);
 print(status.paid);
