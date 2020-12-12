@@ -7,16 +7,22 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-java@v1
+    - name: Setup Action
+      uses: actions/checkout@v2
+    - name: Setup Java
+      uses: actions/setup-java@v1
       with:
         java-version: '12.x'
-    - uses: subosito/flutter-action@v1
+    - name: Setup Flutter
+      uses: subosito/flutter-action@v1
       with:
         channel: 'stable'
-    - run: flutter pub get
-    - run: flutter test
-    - uses: sakebook/actions-flutter-pub-publisher@v1.3.1
+    - name: Run Tests
+      run: |
+        flutter pub get
+        flutter test
+    - name: Publish
+      uses: sakebook/actions-flutter-pub-publisher@v1.3.1
       with:
         credential: ${{ secrets.CREDENTIAL_JSON }}
         dry_run: true
