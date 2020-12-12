@@ -2,6 +2,7 @@
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Pub Version](https://img.shields.io/pub/v/apklis_payment_checker)](https://pub.dev/packages/apklis_payment_checker)
+[![ci](https://github.com/fluttercuba/apklis-payment-checker-flutter/workflows/CI/badge.svg?branch=main)](https://github.com/fluttercuba/apklis-payment-checker-flutter/actions?query=workflow%3ACI)
 [![Last commit](https://img.shields.io/github/last-commit/fluttercuba/apklis-payment-checker-flutter.svg?style=flat)](https://github.com/fluttercuba/apklis-payment-checker-flutter/commits)
 [![GitHub commit activity](https://img.shields.io/github/commit-activity/m/fluttercuba/apklis-payment-checker-flutter)](https://github.com/fluttercuba/apklis-payment-checker-flutter/commits)
 [![Github Stars](https://img.shields.io/github/stars/fluttercuba/apklis-payment-checker-flutter?style=flat&logo=github)](https://github.com/fluttercuba/apklis-payment-checker-flutter/stargazers)
