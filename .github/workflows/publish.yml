@@ -1,10 +1,10 @@
-name: Publish
+name: publish
 on:
   push:
     tags: v*.*.*
   workflow_dispatch:
 jobs:
-  Publish:
+  publish:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
