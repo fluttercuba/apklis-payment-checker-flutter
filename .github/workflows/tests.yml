@@ -14,16 +14,16 @@ jobs:
         uses: subosito/flutter-action@v1
         with:
           channel: 'stable'
-      - name: Run tests
+      - name: Run Tests
         run: |
           flutter pub get
           flutter test
-      - name: Run analysis
+      - name: Run Analysis
         uses: axel-op/dart-package-analyzer@v3
         id: analysis
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
-      - name: Check scores
+      - name: Check Scores
         env:
           TOTAL: ${{ steps.analysis.outputs.total }}
           TOTAL_MAX: ${{ steps.analysis.outputs.total_max }}
@@ -40,31 +40,37 @@ jobs:
           NULL_SAFETY: ${{ steps.analysis.outputs.null_safety }}
           NULL_SAFETY_MAX: ${{ steps.analysis.outputs.null_safety_max }}
         run: |
-          if (( $TOTAL < $TOTAL_MAX ))
-          then
-            exit 1
-          fi
+          # if (( $TOTAL < $TOTAL_MAX ))
+          # then
+          #   exit 1
+          # fi
           if (( $CONVENTIONS < $CONVENTIONS_MAX ))
           then
+            echo Fail conventions section
             exit 1
           fi
           if (( $DOCUMENTATION < $DOCUMENTATION_MAX ))
           then
+            echo Fail documentation section
             exit 1
           fi
           if (( $PLATFORMS < $PLATFORMS_MAX ))
           then
+            echo Fail platforms section
             exit 1
           fi
           if (( $ANALYSIS < $ANALYSIS_MAX ))
           then
+            echo Fail analysis section
             exit 1
           fi
           if (( $DEPENDENCIES < $DEPENDENCIES_MAX ))
           then
+            echo Fail dependencies section
             exit 1
           fi
           if (( $NULL_SAFETY < $NULL_SAFETY_MAX ))
           then
+            echo Fail null_safety section
             exit 1
           fi
