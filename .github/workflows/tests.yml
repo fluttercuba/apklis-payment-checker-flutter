@@ -54,11 +54,11 @@ jobs:
             echo Fail documentation section
             exit 1
           fi
-          if (( $PLATFORMS < $PLATFORMS_MAX ))
-          then
-            echo Fail platforms section
-            exit 1
-          fi
+          # if (( $PLATFORMS < $PLATFORMS_MAX ))
+          # then
+          #   echo Fail platforms section
+          #   exit 1
+          # fi
           if (( $ANALYSIS < $ANALYSIS_MAX ))
           then
             echo Fail analysis section
