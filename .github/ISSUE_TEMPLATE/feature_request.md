@@ -1,6 +1,6 @@
 ---
 name: Solicitud de característica
-aboutacerca de: Sugerir una idea para este proyecto
+about: Sugerir una idea para este proyecto
 title: '[FEATURE] '
 labels: 'feature'
 assignees: ''
