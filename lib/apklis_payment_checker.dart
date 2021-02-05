@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:apklis_payment_checker/apklis_info.dart';
+import 'package:apklis_payment_checker/apklis_info_checker.dart';
 import 'package:apklis_payment_checker/apklis_payment_status.dart';
 import 'package:flutter/services.dart';
 
@@ -17,4 +19,6 @@ class ApklisPaymentChecker {
     final Map map = await channel.invokeMapMethod('isPurchased', packageId);
     return ApklisPaymentStatus(map['paid'], map['username']);
   }
+
+  static Future<ApklisInfo> getApklisInfo() => ApklisInfoCheck.getApklisInfo();
 }
