@@ -6,7 +6,7 @@ class ApklisInfoCheck {
   /// [bool] isInstalled
   /// [int] versionCode
   /// [String] versionName
-  static Future<ApklisInfo> getApklistInfo() async {
+  static Future<ApklisInfo> getApklisInfo() async {
     Application app = await DeviceApps.getApp('cu.uci.android.apklis');
     if (app != null) {
       return ApklisInfo(true, app.versionCode, app.versionName);
