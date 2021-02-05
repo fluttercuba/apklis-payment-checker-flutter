@@ -2,7 +2,6 @@ import 'package:apklis_payment_checker/apklis_info.dart';
 import 'package:device_apps/device_apps.dart';
 
 class ApklisInfoCheck {
-
   /// Devuelve la siguiente información sobre Apklis
   /// [bool] isInstalled
   /// [int] versionCode
@@ -15,5 +14,4 @@ class ApklisInfoCheck {
       return ApklisInfo(false, 0, '');
     }
   }
-
 }

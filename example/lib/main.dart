@@ -49,7 +49,7 @@ class ExampleAppState extends State<ExampleApp> {
 
   Future<bool> getApklisInfo() async {
     apklisInfo = await ApklisInfoCheck.getApklistInfo();
-    setState((){});
+    setState(() {});
   }
 
   @override

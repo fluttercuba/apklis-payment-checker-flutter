@@ -5,4 +5,3 @@ class ApklisInfo {
 
   ApklisInfo(this.isInstalled, this.versionCode, this.versionName);
 }
-
