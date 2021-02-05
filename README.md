@@ -33,7 +33,7 @@ print(status.paid);
 print(status.username);
 ```
 
-Para conocer información sobre ApkLis:
+Para conocer información sobre Apklis:
 
 ```dart
 var apklisInfo = await ApklisPaymentChecker.getApklistInfo();
