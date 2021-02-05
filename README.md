@@ -33,4 +33,13 @@ print(status.paid);
 print(status.username);
 ```
 
+Para conocer información sobre ApkLis
+
+```dart
+var apklisInfo = await ApklisInfoCheck.getApklistInfo();
+print(apklisInfo.isInstalled);
+print(apklisInfo.versionName);
+print(apklisInfo.versionCode);
+```
+
 Ejemplo completo disponible en: <https://pub.dev/packages/apklis_payment_checker/example>

@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:apklis_payment_checker/apklis_payment_status.dart';
 import 'package:flutter/services.dart';
+import 'package:apklis_payment_checker/apklis_payment_status.dart';
 
 class ApklisPaymentChecker {
   static const channel = const MethodChannel('apklis_payment_checker');
