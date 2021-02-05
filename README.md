@@ -1,6 +1,6 @@
 # Apklis Payment Checker para Flutter
 
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Pub Version](https://img.shields.io/pub/v/apklis_payment_checker)](https://pub.dev/packages/apklis_payment_checker)
 [![tests](https://github.com/fluttercuba/apklis-payment-checker-flutter/workflows/tests/badge.svg?branch=main)](https://github.com/fluttercuba/apklis-payment-checker-flutter/actions?query=workflow%3Atests)
 [![Last commit](https://img.shields.io/github/last-commit/fluttercuba/apklis-payment-checker-flutter.svg?style=flat)](https://github.com/fluttercuba/apklis-payment-checker-flutter/commits)
@@ -33,10 +33,10 @@ print(status.paid);
 print(status.username);
 ```
 
-Para conocer información sobre ApkLis
+Para conocer información sobre ApkLis:
 
 ```dart
-var apklisInfo = await ApklisInfoCheck.getApklistInfo();
+var apklisInfo = await ApklisPaymentChecker.getApklistInfo();
 print(apklisInfo.isInstalled);
 print(apklisInfo.versionName);
 print(apklisInfo.versionCode);
