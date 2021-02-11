@@ -1,5 +1,9 @@
 # Historial de Cambios
 
+## 0.3.1
+
+* Añadir comentarios para la generación automática de la documentación
+
 ## 0.3.0
 
 * Implementar método para saber si Apklis esta instalada en el dispositivo (En caso positivo, saber también el número y nombre de la versión)
