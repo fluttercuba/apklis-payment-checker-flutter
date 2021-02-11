@@ -1,17 +1,19 @@
-/// La clase ApklisInfo registra la información de la aplicación apklis.
+/// La clase ApklisInfo registra la información de la aplicación Apklis.
 ///
-/// Registra si se encuentra instalado o no.
-/// Registra el código de versión.
+/// Registra si se encuentra instalada o no.
+/// Registra el código de la versión.
 /// Registra el nombre de la versión.
 class ApklisInfo {
-  /// El [isInstalled]  almacena el valor en `true` si esta instalado
-  /// y `false` en caso contrario
+  /// El [isInstalled] almacena el valor en `true` si esta instalada
+  /// y `false` en caso contrario.
   final bool isInstalled;
-  /// El [versionCode] el valor del codigo e versión
+
+  /// El [versionCode] almacena el valor del código de la versión
   final int versionCode;
-  /// El [verisionName] almacena el valor del nombre de versión
+
+  /// El [versionName] almacena el valor del nombre de la versión
   final String versionName;
 
-  /// Para crear un apklis payment status llamar [ApklisInfo()]
+  /// Para crear una instancia de la clase [ApklisInfo]
   ApklisInfo(this.isInstalled, this.versionCode, this.versionName);
 }
