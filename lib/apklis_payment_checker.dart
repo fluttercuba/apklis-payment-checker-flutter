@@ -16,15 +16,19 @@ class ApklisPaymentChecker {
 
   /// Devuelve `String` con el nombre del paquete.
   static Future<String> getPackageName() async {
-    final Map map = await channel.invokeMapMethod('getPackageName');
+    final Map map = await (channel.invokeMapMethod('getPackageName')
+        as FutureOr<Map<dynamic, dynamic>>);
     final String packageName = map['packageName'];
     return packageName;
   }
 
   /// Devuelve `Future<ApklisPaymentStatus>` con la información del estado de pago.
-  static Future<ApklisPaymentStatus> isPurchased([String packageId]) async {
+  static Future<ApklisPaymentStatus> isPurchased([String? packageId]) async {
     packageId ??= await getPackageName();
-    final Map map = await channel.invokeMapMethod('isPurchased', packageId);
+    final Map? map = await (channel.invokeMapMethod('isPurchased', packageId));
+    if (map == null) {
+      return ApklisPaymentStatus(false, null);
+    }
     return ApklisPaymentStatus(map['paid'], map['username']);
   }
 

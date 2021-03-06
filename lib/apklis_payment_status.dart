@@ -7,7 +7,7 @@ class ApklisPaymentStatus {
   final bool paid;
 
   /// El [username] almacena el nombre de usuario.
-  final String username;
+  final String? username;
 
   /// Para crear un instancia de la clase [ApklisPaymentStatus]
   ApklisPaymentStatus(this.paid, this.username);
