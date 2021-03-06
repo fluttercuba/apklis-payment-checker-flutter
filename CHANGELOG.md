@@ -1,5 +1,9 @@
 # Historial de Cambios
 
+## 1.0.0
+
+* Soporte para null-safety
+
 ## 0.3.1
 
 * Añadir comentarios para la generación automática de la documentación
