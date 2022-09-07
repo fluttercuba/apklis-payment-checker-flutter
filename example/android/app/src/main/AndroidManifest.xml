@@ -2,7 +2,7 @@
     package="cu.fluttercuba.apklis_payment_checker_example">
 
     <application
-        android:name="io.flutter.app.FlutterApplication"
+        android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
         android:label="apklis_payment_checker_example">
         <activity
