@@ -17,12 +17,13 @@ class Verify {
             var userName: String? = null
             val providerURI: Uri = Uri.parse("$APKLIS_PROVIDER$packageId")
             try {
-                val contentResolver = context.contentResolver.acquireContentProviderClient(providerURI)
+                val contentResolver =
+                    context.contentResolver.acquireContentProviderClient(providerURI)
                 val cursor = contentResolver?.query(providerURI, null, null, null, null)
                 cursor?.let {
                     if (it.moveToFirst()) {
-                        paid = it.getInt(it.getColumnIndex(APKLIS_PAID)) > 0
-                        userName = it.getString(it.getColumnIndex(APKLIS_USER_NAME))
+                        paid = it.getInt(it.getColumnIndexOrThrow(APKLIS_PAID)) > 0
+                        userName = it.getString(it.getColumnIndexOrThrow(APKLIS_USER_NAME))
                     }
                 }
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
@@ -33,6 +34,8 @@ class Verify {
                 cursor?.close()
             } catch (e: RemoteException) {
                 e.printStackTrace()
+            } catch (e: IllegalArgumentException) {
+                return Pair(false, null)
             }
             return Pair(paid, userName)
         }
