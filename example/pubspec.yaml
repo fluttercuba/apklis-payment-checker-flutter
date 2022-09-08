@@ -1,23 +1,22 @@
 name: apklis_payment_checker_example
 description: Demonstrates how to use the apklis_payment_checker plugin.
 
-publish_to: 'none'
+publish_to: "none"
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.16.0 <3.0.0"
 
 dependencies:
-  flutter:
-    sdk: flutter
-
   apklis_payment_checker:
     path: ../
-
   cupertino_icons: ^1.0.0
+  flutter:
+    sdk: flutter
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  lint: ^1.10.0
 
 flutter:
   uses-material-design: true
