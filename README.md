@@ -9,6 +9,7 @@
 [![Github Forks](https://img.shields.io/github/forks/fluttercuba/apklis-payment-checker-flutter?style=flat&logo=github)](https://github.com/fluttercuba/apklis-payment-checker-flutter/network/members)
 [![Github Watchers](https://img.shields.io/github/watchers/fluttercuba/apklis-payment-checker-flutter?style=flat&logo=github)](https://github.com/fluttercuba/apklis-payment-checker-flutter)
 [![GitHub contributors](https://img.shields.io/github/contributors/fluttercuba/apklis-payment-checker-flutter)](https://github.com/fluttercuba/apklis-payment-checker-flutter/graphs/contributors)
+[![style: lint](https://img.shields.io/badge/style-lint-4BC0F5.svg)](https://pub.dev/packages/lint)
 
 Plugin de Flutter para el chequeo de pagos de Apklis
 
@@ -25,14 +26,29 @@ dependencies:
 
 🚧 Si tu app se orienta a Android 11 (nivel de API 30) o versiones posteriores debes agregar las siguientes líneas en el archivo `AndroidManifest.xml`:
 
-```xml
-<manifest package="cu.fluttercuba.apklis_payment_checker_example">
-    <queries>
-        <package android:name="cu.apklis.payment" />
-    </queries>
+1. Agrega el permiso `<package android:name="cu.apklis.payment" />`:
+
+    ```xml
+    <manifest package="cu.fluttercuba.apklis_payment_checker_example">
+        <queries>
+            <package android:name="cu.apklis.payment" />
+        </queries>
+        ...
+    </manifest>
+    ```
+
+2. Agrega la bandera `android:exported="true"` al `activity` de la aplicación:
+
+    ```xml
     ...
-</manifest>
-```
+    <activity
+        android:name=".MainActivity"
+        ...
+        android:exported="true">
+    ...
+    ```
+
+    Ver el [archivo](https://github.com/fluttercuba/apklis-payment-checker-flutter/blob/main/example/android/app/src/main/AndroidManifest.xml) `AndroidManifest.xml` del ejemplo de este repositorio.
 
 ## Uso
 
