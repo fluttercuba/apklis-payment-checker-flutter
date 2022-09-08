@@ -38,6 +38,14 @@ class ApklisPaymentCheckerPlugin : FlutterPlugin, MethodCallHandler {
                 hashMap["username"] = response?.second
                 return result.success(hashMap)
             }
+            "getApklisInfo" -> {
+                val response = Verify.getApklisInfo(context)
+                val hashMap = HashMap<String, Any?>()
+                hashMap["isIntalled" ] = response.first
+                hashMap["versionCode"] = response.second
+                hashMap["versionName"] = response.third
+                return result.success(hashMap)
+            }
             else -> {
                 result.notImplemented()
             }

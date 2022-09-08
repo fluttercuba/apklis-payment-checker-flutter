@@ -1,6 +1,7 @@
 package cu.fluttercuba.apklis_payment_checker
 
 import android.content.Context
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.RemoteException
 
@@ -38,6 +39,33 @@ class Verify {
                 return Pair(false, null)
             }
             return Pair(paid, userName)
+        }
+
+        fun getApklisInfo(context: Context): Triple<Boolean, Int?, String?> {
+            var isInstaller: Boolean
+            var versionCode: Int? = null
+            var versionName: String? = null
+
+            val packageManager: PackageManager = context.packageManager
+            try {
+                isInstaller = true
+                val info = packageManager.getPackageInfo(
+                    "cu.uci.android.apklis",
+                    PackageManager.GET_ACTIVITIES
+                )
+                versionName = info.versionName
+
+                versionCode = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.P) {
+                    info.longVersionCode.toInt()
+                } else {
+                    info.versionCode
+                }
+
+            } catch (e: PackageManager.NameNotFoundException) {
+                isInstaller = false
+            }
+
+            return Triple(isInstaller, versionCode, versionName)
         }
     }
 }
