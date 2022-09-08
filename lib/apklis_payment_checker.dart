@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:apklis_payment_checker/apklis_info.dart';
-import 'package:apklis_payment_checker/apklis_info_checker.dart';
 import 'package:apklis_payment_checker/apklis_payment_status.dart';
 import 'package:flutter/services.dart';
 
@@ -17,7 +16,7 @@ class ApklisPaymentChecker {
   /// Devuelve `String` con el nombre del paquete.
   static Future<String> getPackageName() async {
     final Map map = await (channel.invokeMapMethod('getPackageName')
-        as FutureOr<Map<dynamic, dynamic>>);
+        as Future<Map<dynamic, dynamic>>);
     final String packageName = map['packageName'];
     return packageName;
   }
@@ -33,5 +32,19 @@ class ApklisPaymentChecker {
   }
 
   /// Devuelve `Future<ApklisInfo>` con la información de Apklis.
-  static Future<ApklisInfo> getApklisInfo() => ApklisInfoCheck.getApklisInfo();
+  static Future<ApklisInfo> getApklisInfo() async {
+    final Map map = await (channel.invokeMapMethod('getApklisInfo')
+        as Future<Map<dynamic, dynamic>>);
+
+    final isIntalled = map['isIntalled'] as bool;
+
+    if (isIntalled) {
+      final versionCode = map['versionCode'] as int?;
+      final versionName = map['versionName'] as String?;
+
+      return ApklisInfo(isIntalled, versionCode, versionName);
+    }
+
+    return ApklisInfo(false, null, null);
+  }
 }
