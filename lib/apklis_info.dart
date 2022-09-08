@@ -20,4 +20,18 @@ class ApklisInfo {
     required this.versionCode,
     required this.versionName,
   });
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is ApklisInfo &&
+        other.isInstalled == isInstalled &&
+        other.versionCode == versionCode &&
+        other.versionName == versionName;
+  }
+
+  @override
+  int get hashCode =>
+      isInstalled.hashCode ^ versionCode.hashCode ^ versionName.hashCode;
 }

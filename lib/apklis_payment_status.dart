@@ -14,4 +14,16 @@ class ApklisPaymentStatus {
     required this.paid,
     required this.username,
   });
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is ApklisPaymentStatus &&
+        other.paid == paid &&
+        other.username == username;
+  }
+
+  @override
+  int get hashCode => paid.hashCode ^ username.hashCode;
 }

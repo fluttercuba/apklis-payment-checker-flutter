@@ -18,10 +18,9 @@ class ApklisPaymentChecker {
 
   /// Devuelve `String` con el nombre del paquete.
   static Future<String> getPackageName() async {
-    final Map map = await (_channel.invokeMapMethod('getPackageName')
-        as Future<Map<dynamic, dynamic>>);
+    final Map? map = await _channel.invokeMapMethod('getPackageName');
 
-    final String packageName = map['packageName'] as String;
+    final String packageName = map!['packageName'] as String;
 
     return packageName;
   }
@@ -35,17 +34,16 @@ class ApklisPaymentChecker {
     }
 
     final paid = map['paid'] as bool;
-    final username = map['username'] as String;
+    final username = map['username'] as String?;
 
     return ApklisPaymentStatus(paid: paid, username: username);
   }
 
   /// Devuelve `Future<ApklisInfo>` con la información de Apklis.
   static Future<ApklisInfo> getApklisInfo() async {
-    final Map map = await (_channel.invokeMapMethod('getApklisInfo')
-        as Future<Map<dynamic, dynamic>>);
+    final Map? map = await _channel.invokeMapMethod('getApklisInfo');
 
-    final isIntalled = map['isIntalled'] as bool;
+    final isIntalled = map!['isIntalled'] as bool;
 
     if (isIntalled) {
       final versionCode = map['versionCode'] as int?;
