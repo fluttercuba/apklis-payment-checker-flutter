@@ -20,9 +20,14 @@ void main() {
     channel.setMockMethodCallHandler(null);
   });
 
+  test('should parse string to OperationModel `', () {
+    expect(channel, equals(const MethodChannel('apklis_payment_checker')));
+  });
+
   test('isPurchased', () async {
-    final packageId = 'com.example.nova.prosalud';
-    var status = await ApklisPaymentChecker.isPurchased(packageId);
+    const packageId = 'com.example.nova.prosalud';
+    final status = await ApklisPaymentChecker.isPurchased(packageId);
+
     expect(status.paid, false);
     expect(status.username, "example");
   });

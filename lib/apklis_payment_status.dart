@@ -10,5 +10,8 @@ class ApklisPaymentStatus {
   final String? username;
 
   /// Para crear un instancia de la clase [ApklisPaymentStatus]
-  ApklisPaymentStatus(this.paid, this.username);
+  ApklisPaymentStatus({
+    required this.paid,
+    required this.username,
+  });
 }

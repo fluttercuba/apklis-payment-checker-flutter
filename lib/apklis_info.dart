@@ -15,5 +15,9 @@ class ApklisInfo {
   final String? versionName;
 
   /// Para crear una instancia de la clase [ApklisInfo]
-  ApklisInfo(this.isInstalled, this.versionCode, this.versionName);
+  ApklisInfo({
+    required this.isInstalled,
+    required this.versionCode,
+    required this.versionName,
+  });
 }
