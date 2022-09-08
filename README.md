@@ -14,7 +14,25 @@ Plugin de Flutter para el chequeo de pagos de Apklis
 
 Disponible en Pub.dev: <https://pub.dev/packages/apklis_payment_checker>
 
-Para conocer como instalar seguir el siguiente enlace: <https://pub.dev/packages/apklis_payment_checker/install>
+## Instalación
+
+Añade el plugin a las dependencias de tu proyecto:
+
+```yaml
+dependencies:
+  apklis_payment_checker: ^1.0.0
+```
+
+🚧 Si tu app se orienta a Android 11 (nivel de API 30) o versiones posteriores debes agregar las siguientes líneas en el archivo `AndroidManifest.xml`:
+
+```xml
+<manifest package="cu.fluttercuba.apklis_payment_checker_example">
+    <queries>
+        <package android:name="cu.apklis.payment" />
+    </queries>
+    ...
+</manifest>
+```
 
 ## Uso
 
