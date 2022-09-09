@@ -4,17 +4,17 @@ version: 1.0.0
 homepage: https://github.com/fluttercuba/apklis-payment-checker-flutter
 
 environment:
-  sdk: '>=2.12.0 <3.0.0'
-  flutter: ">=1.20.0"
+  sdk: ">=2.16.0 <3.0.0"
+  flutter: ">=2.10.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  device_apps_null_safety: ^2.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  lint: ^1.10.0
 
 flutter:
   plugin:

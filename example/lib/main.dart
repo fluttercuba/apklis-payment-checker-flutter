@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:apklis_payment_checker/apklis_info.dart';
-import 'package:apklis_payment_checker/apklis_info_checker.dart';
 import 'package:apklis_payment_checker/apklis_payment_checker.dart';
 import 'package:apklis_payment_checker/apklis_payment_status.dart';
 import 'package:flutter/material.dart';
@@ -20,8 +19,8 @@ class ExampleApp extends StatefulWidget {
 class ExampleAppState extends State<ExampleApp> {
   final keyForm = GlobalKey<FormState>();
   final controller = TextEditingController();
-  ApklisPaymentStatus status;
-  ApklisInfo apklisInfo;
+  ApklisPaymentStatus? status;
+  ApklisInfo? apklisInfo;
 
   @override
   void initState() {
@@ -29,9 +28,15 @@ class ExampleAppState extends State<ExampleApp> {
     setPackageName();
   }
 
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
   Future<void> setPackageName() async {
     try {
-      var packageName = await ApklisPaymentChecker.getPackageName();
+      final packageName = await ApklisPaymentChecker.getPackageName();
       setState(() => controller.text = packageName);
     } on PlatformException catch (e) {
       log(e.toString());
@@ -48,7 +53,7 @@ class ExampleAppState extends State<ExampleApp> {
   }
 
   Future<void> getApklisInfo() async {
-    final apklisInfo = await ApklisInfoCheck.getApklisInfo();
+    final apklisInfo = await ApklisPaymentChecker.getApklisInfo();
     setState(() => this.apklisInfo = apklisInfo);
   }
 
@@ -66,16 +71,17 @@ class ExampleAppState extends State<ExampleApp> {
           child: Column(
             children: [
               Container(
-                margin: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+                margin:
+                    const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
                 child: Row(
                   children: [
                     Expanded(
                       child: TextFormField(
                         controller: controller,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           border: OutlineInputBorder(
-                            borderRadius: const BorderRadius.all(
-                              const Radius.circular(10.0),
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(10.0),
                             ),
                           ),
                           labelText: 'Package Id',
@@ -97,73 +103,73 @@ class ExampleAppState extends State<ExampleApp> {
                 Column(
                   children: [
                     Container(
-                      margin: EdgeInsets.all(5),
-                      child: Text('Apklis is installed:'),
+                      margin: const EdgeInsets.all(5),
+                      child: const Text('Apklis is installed:'),
                     ),
                     Container(
-                      margin: EdgeInsets.all(5),
+                      margin: const EdgeInsets.all(5),
                       child: Text(
-                        apklisInfo.isInstalled.toString(),
-                        style: TextStyle(
+                        apklisInfo?.isInstalled.toString() ?? 'false',
+                        style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
                         ),
                       ),
                     ),
-                    if (apklisInfo.isInstalled)
+                    if (apklisInfo?.isInstalled ?? false)
                       Column(
                         children: [
                           Container(
-                            margin: EdgeInsets.all(5),
-                            child: Text('Apklis version code:'),
+                            margin: const EdgeInsets.all(5),
+                            child: const Text('Apklis version code:'),
                           ),
                           Container(
-                            margin: EdgeInsets.all(5),
+                            margin: const EdgeInsets.all(5),
                             child: Text(
-                              apklisInfo.versionCode.toString(),
-                              style: TextStyle(
+                              apklisInfo?.versionCode.toString() ?? '',
+                              style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20,
                               ),
                             ),
                           ),
                           Container(
-                            margin: EdgeInsets.all(5),
-                            child: Text('Apklis version name:'),
+                            margin: const EdgeInsets.all(5),
+                            child: const Text('Apklis version name:'),
                           ),
                           Container(
-                            margin: EdgeInsets.all(5),
+                            margin: const EdgeInsets.all(5),
                             child: Text(
-                              apklisInfo.versionName,
-                              style: TextStyle(
+                              apklisInfo?.versionName ?? 'Unknown',
+                              style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20,
                               ),
                             ),
                           ),
                           Container(
-                            margin: EdgeInsets.all(5),
-                            child: Text('Username registered in Apklis:'),
+                            margin: const EdgeInsets.all(5),
+                            child: const Text('Username registered in Apklis:'),
                           ),
                           Container(
-                            margin: EdgeInsets.all(5),
+                            margin: const EdgeInsets.all(5),
                             child: Text(
-                              status.username ?? 'Unknow',
-                              style: TextStyle(
+                              status?.username ?? 'Unknow',
+                              style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20,
                               ),
                             ),
                           ),
                           Container(
-                            margin: EdgeInsets.all(5),
-                            child: Text('App payment status:'),
+                            margin: const EdgeInsets.all(5),
+                            child: const Text('App payment status:'),
                           ),
                           Container(
-                            margin: EdgeInsets.all(5),
+                            margin: const EdgeInsets.all(5),
                             child: Text(
-                              status.paid.toString(),
-                              style: TextStyle(
+                              status?.paid.toString() ?? 'Unknow',
+                              style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20,
                               ),
@@ -177,9 +183,9 @@ class ExampleAppState extends State<ExampleApp> {
           ),
         ),
         floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.search),
+          child: const Icon(Icons.search),
           onPressed: () {
-            if (keyForm.currentState.validate()) {
+            if (keyForm.currentState?.validate() ?? false) {
               final packageId = controller.text.trim();
               requestPaymentStatus(packageId);
               getApklisInfo();

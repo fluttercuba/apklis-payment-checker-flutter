@@ -9,11 +9,29 @@ class ApklisInfo {
   final bool isInstalled;
 
   /// El [versionCode] almacena el valor del código de la versión
-  final int versionCode;
+  final int? versionCode;
 
   /// El [versionName] almacena el valor del nombre de la versión
-  final String versionName;
+  final String? versionName;
 
   /// Para crear una instancia de la clase [ApklisInfo]
-  ApklisInfo(this.isInstalled, this.versionCode, this.versionName);
+  ApklisInfo({
+    required this.isInstalled,
+    required this.versionCode,
+    required this.versionName,
+  });
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is ApklisInfo &&
+        other.isInstalled == isInstalled &&
+        other.versionCode == versionCode &&
+        other.versionName == versionName;
+  }
+
+  @override
+  int get hashCode =>
+      isInstalled.hashCode ^ versionCode.hashCode ^ versionName.hashCode;
 }
