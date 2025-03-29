@@ -1,8 +1,8 @@
 group 'cu.fluttercuba.apklis_payment_checker'
 version '1.0-SNAPSHOT'
 
-buildscript {
-    ext.kotlin_version = '1.6.21'
+buildscript {    
+    ext.kotlin_version = '1.7.10'
     repositories {
         google()
         mavenCentral()
@@ -25,7 +25,13 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 31
+    namespace="cu.fluttercuba.apklis_payment_checker"
+    compileSdkVersion 34
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
