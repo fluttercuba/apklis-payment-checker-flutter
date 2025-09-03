@@ -2,4 +2,9 @@
     package="cu.fluttercuba.apklis_payment_checker">
 
     <uses-permission android:name="android.permission.READ_USER_DICTIONARY" />
+
+    <queries>
+        <package android:name="cu.uci.android.apklis" />
+        <provider android:authorities="cu.uci.android.apklis.PaymentProvider" />
+    </queries>
 </manifest>
