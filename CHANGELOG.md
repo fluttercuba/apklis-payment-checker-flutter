@@ -1,5 +1,10 @@
 # Historial de Cambios
 
+## 1.1.0-dev
+
+* Actulizado el Apklis payment provider en Android
+* Actulizado la versiones de AGP y Gradle
+
 ## 1.0.0
 
 * Soporte para null-safety
@@ -19,7 +24,7 @@
 ## 0.1.1
 
 * Poner de homepage el enlace al repositorio
-* Añadir un badge de la última versión disponible en pub.dev 
+* Añadir un badge de la última versión disponible en pub.dev
 
 ## 0.1.0
 

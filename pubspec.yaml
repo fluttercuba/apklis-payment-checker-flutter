@@ -1,6 +1,6 @@
 name: apklis_payment_checker
 description: Plugin de Flutter para el chequeo de pagos de Apklis. Basado en el repositorio para Kotlin y Java https://github.com/Z17-CU/apklischeckpayment
-version: 1.0.0
+version: 1.1.0-dev
 homepage: https://github.com/fluttercuba/apklis-payment-checker-flutter
 
 environment:

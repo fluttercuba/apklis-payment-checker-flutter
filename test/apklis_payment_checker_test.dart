@@ -6,12 +6,14 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   const MethodChannel channel = MethodChannel('apklis_payment_checker');
+
   const packageId = 'com.example.nova.prosalud';
 
   TestWidgetsFlutterBinding.ensureInitialized();
 
   tearDown(() {
-    channel.setMockMethodCallHandler(null);
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+        .setMockMethodCallHandler(channel, null);
   });
 
   test('channel have one instance', () {
@@ -19,11 +21,15 @@ void main() {
   });
   // TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
   test('getPackageName', () async {
-    channel.setMockMethodCallHandler((MethodCall methodCall) async {
-      return {
-        'packageName': packageId,
-      };
-    });
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+        .setMockMethodCallHandler(
+      channel,
+      (MethodCall methodCall) async {
+        return {
+          'packageName': packageId,
+        };
+      },
+    );
 
     final packageName = await ApklisPaymentChecker.getPackageName();
 
@@ -33,17 +39,21 @@ void main() {
   group('check isPunchased', () {
     test('when the packageId parameter is null and the app is not paid',
         () async {
-      channel.setMockMethodCallHandler((MethodCall methodCall) async {
-        if (methodCall.method == 'getPackageName') {
+      TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+          .setMockMethodCallHandler(
+        channel,
+        (MethodCall methodCall) async {
+          if (methodCall.method == 'getPackageName') {
+            return {
+              'packageName': packageId,
+            };
+          }
           return {
-            'packageName': packageId,
+            'paid': false,
+            'username': null,
           };
-        }
-        return {
-          'paid': false,
-          'username': null,
-        };
-      });
+        },
+      );
 
       final status = await ApklisPaymentChecker.isPurchased();
 
@@ -54,12 +64,16 @@ void main() {
     });
 
     test('when the app is not paid', () async {
-      channel.setMockMethodCallHandler((MethodCall methodCall) async {
-        return {
-          'paid': false,
-          'username': null,
-        };
-      });
+      TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+          .setMockMethodCallHandler(
+        channel,
+        (MethodCall methodCall) async {
+          return {
+            'paid': false,
+            'username': null,
+          };
+        },
+      );
 
       final status = await ApklisPaymentChecker.isPurchased(packageId);
 
@@ -70,9 +84,13 @@ void main() {
     });
 
     test('when channel return null', () async {
-      channel.setMockMethodCallHandler((MethodCall methodCall) async {
-        return null;
-      });
+      TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+          .setMockMethodCallHandler(
+        channel,
+        (MethodCall methodCall) async {
+          return null;
+        },
+      );
 
       final status = await ApklisPaymentChecker.isPurchased(packageId);
 
@@ -83,12 +101,16 @@ void main() {
     });
 
     test('when the app is paid', () async {
-      channel.setMockMethodCallHandler((MethodCall methodCall) async {
-        return {
-          'paid': true,
-          'username': 'example',
-        };
-      });
+      TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+          .setMockMethodCallHandler(
+        channel,
+        (MethodCall methodCall) async {
+          return {
+            'paid': true,
+            'username': 'example',
+          };
+        },
+      );
 
       final status = await ApklisPaymentChecker.isPurchased(packageId);
 
@@ -101,13 +123,17 @@ void main() {
 
   group('getApklisInfo', () {
     test('when the Apklis app is not intalled', () async {
-      channel.setMockMethodCallHandler((MethodCall methodCall) async {
-        return {
-          'isIntalled': false,
-          'versionCode': null,
-          'versionName': null,
-        };
-      });
+      TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+          .setMockMethodCallHandler(
+        channel,
+        (MethodCall methodCall) async {
+          return {
+            'isIntalled': false,
+            'versionCode': null,
+            'versionName': null,
+          };
+        },
+      );
 
       final info = await ApklisPaymentChecker.getApklisInfo();
 
@@ -124,13 +150,17 @@ void main() {
     });
 
     test('when the Apklis app is installed but no user is logged in', () async {
-      channel.setMockMethodCallHandler((MethodCall methodCall) async {
-        return {
-          'isIntalled': true,
-          'versionCode': null,
-          'versionName': null,
-        };
-      });
+      TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+          .setMockMethodCallHandler(
+        channel,
+        (MethodCall methodCall) async {
+          return {
+            'isIntalled': true,
+            'versionCode': null,
+            'versionName': null,
+          };
+        },
+      );
 
       final info = await ApklisPaymentChecker.getApklisInfo();
 
