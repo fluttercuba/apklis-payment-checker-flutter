@@ -1,13 +1,19 @@
 # Historial de Cambios
 
+## 1.1.0
+
+* Actualizada versión mínima de Flutter a  ">=3.16.0" y Dart a ">=3.2.0 <4.0.0"
+* Actualizado el Apklis payment provider en Android
+* Actualizadas las versiones de AGP y Gradle
+
 ## 1.1.0-dev.4
 
-* Actulizada version mínima de Flutter a  ">=3.16.0" y Dart a ">=3.2.0 <4.0.0"
+* Actulizada versión mínima de Flutter a  ">=3.16.0" y Dart a ">=3.2.0 <4.0.0"
 
 ## 1.1.0-dev
 
 * Actulizado el Apklis payment provider en Android
-* Actulizado la versiones de AGP y Gradle
+* Actulizadas las versiones de AGP y Gradle
 
 ## 1.0.0
 
@@ -19,7 +25,7 @@
 
 ## 0.3.0
 
-* Implementar método para saber si Apklis esta instalada en el dispositivo (En caso positivo, saber también el número y nombre de la versión)
+* Implementar método para saber si Apklis está instalada en el dispositivo (En caso positivo, saber también el número y nombre de la versión)
 
 ## 0.2.0
 
