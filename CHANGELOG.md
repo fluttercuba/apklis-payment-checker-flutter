@@ -1,5 +1,9 @@
 # Historial de Cambios
 
+## 1.1.0-dev.4
+
+* Actulizada version mínima de Flutter a  ">=3.16.0" y Dart a ">=3.2.0 <4.0.0"
+
 ## 1.1.0-dev
 
 * Actulizado el Apklis payment provider en Android
