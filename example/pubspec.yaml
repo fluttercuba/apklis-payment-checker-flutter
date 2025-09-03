@@ -4,7 +4,7 @@ description: Demonstrates how to use the apklis_payment_checker plugin.
 publish_to: "none"
 
 environment:
-  sdk: ">=2.16.0 <3.0.0"
+  sdk: ">=3.2.0 <4.0.0"
 
 dependencies:
   apklis_payment_checker:
